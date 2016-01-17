@@ -1,0 +1,21 @@
+{
+  "code": "100",
+  "error": "",
+  "banners": [
+    {
+      "title": "标题1",
+      "url": "#",
+      "src": "http://www.swiper.com.cn/demo/img/largeNature1.jpg"
+    },
+    {
+      "title": "标题2",
+      "url": "#",
+      "src": "http://www.swiper.com.cn/demo/img/largeNature2.jpg"
+    },
+    {
+      "title": "标题3",
+      "url": "#",
+      "src": "http://www.swiper.com.cn/demo/img/largeNature3.jpg"
+    }
+  ]
+}
