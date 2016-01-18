@@ -1,0 +1,62 @@
+$base: 64;
+// px2rem
+@function px2rem($size) {
+  @return $size / $base * 1rem;
+}
+// gradient
+@mixin gradient($start-color, $end-color) {
+  background: $start-color;
+  background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $start-color), color-stop(100%, $end-color));
+  background: -webkit-linear-gradient(top, $start-color 0%, $end-color 100%);
+  background: -o-linear-gradient(top, $start-color 0%, $end-color 100%);
+  background: -ms-linear-gradient(top, $start-color 0%, $end-color 100%);
+  background: linear-gradient(to bottom, $start-color 0%, $end-color 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$start-color}, endColorstr=#{$end-color}, GradientType=0);
+}
+// font-dpr
+@mixin font-dpr($base-font-size) {
+  font-size: $base-font-size;
+  [data-dpr="2"] & {
+    font-size: $base-font-size * 2px;
+  }
+  [data-dpr="3"] & {
+    font-size: $base-font-size * 3px
+  }
+}
+
+// box-shadow
+@mixin box-shadow($shadows) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+// ellipsis
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// dotdotdot
+@mixin dotdotdot($row){
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+}
+// border-radius
+@mixin border-radius($val) {
+  $_val: px2rem($val);
+  -webkit-border-radius: $_val;
+  -moz-border-radius: $_val;
+  border-radius: $_val;
+}
+// translate3d
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}

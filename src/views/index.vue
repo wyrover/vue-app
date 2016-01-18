@@ -1,4 +1,6 @@
 <style lang="sass">
+@import "../assets/sass/base";
+@import "../assets/sass/utils";
 .swiper {
     &-container {
         background: #000;
@@ -7,17 +9,14 @@
     }
     &-slide {
         text-align: center;
-        font-size: 18px;
+        @include font-dpr(18);
     }
     &-slide img {
          width: auto;
          height: auto;
          max-width: 100%;
          max-height: 100%;
-         -ms-transform: translate(-50%, -50%);
-         -webkit-transform: translate(-50%, -50%);
-         -moz-transform: translate(-50%, -50%);
-         transform: translate(-50%, -50%);
+         @include translate3d(-50%, -50%, 0);
          position: absolute;
          left: 50%;
          top: 50%;
@@ -36,6 +35,8 @@
     <!-- Add Pagination -->
     <div class="swiper-pagination swiper-pagination-white"></div>
 </div>
+<swiper :apps="newApps"></swiper>
+<swiper :apps="newGames"></swiper>
 </template>
 
 <script>
@@ -45,7 +46,9 @@ import {appCfg} from '../appCfg'
 export default {
     data () {
         return {
-            banners: []
+            banners: [],
+            newApps: [],
+            newGames: []
         }
     },
     route: {
@@ -61,6 +64,8 @@ export default {
             $.get(appCfg.ajaxurl.home, (d) => {
                 if (d) {
                     this.banners = d.banners;
+                    this.newApps = d.newApps;
+                    this.newGames = d.newGames;
                     this.$nextTick(() => {
                         this.renderView();
                     });
@@ -82,7 +87,20 @@ export default {
                 autoplayDisableOnInteraction: false,
                 loop: true
             });
+
+
+            var swiper = new Swiper('.swiper', {
+                pagination: '.swiper-pagination',
+                slidesPerView: 3,
+                paginationClickable: false,
+                preloadImages: false,
+                lazyLoading: true,
+                spaceBetween: 30
+            });
         }
+    },
+    components: {
+        swiper: require('../components/swiper.vue')
     }
 }
 </script>
