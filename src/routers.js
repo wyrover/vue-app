@@ -10,9 +10,13 @@ export default function (router) {
             name: 'home',
             component: require('./views/index.vue')
         },
-        '/list':{   //列表页
-            name:'list',
-            component:require('./views/list.vue')
+        '/category':{   //分类
+            name:'category',
+            component:require('./views/category.vue')
+        },
+        '/rank':{   //rank
+            name:'rank',
+            component:require('./views/rank.vue')
         }
     })
 }

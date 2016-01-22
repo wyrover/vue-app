@@ -5,11 +5,11 @@
     &-container {
         background: #000;
         width: 100%;
-        height: 100px;
+        height: px2rem(100);
     }
     &-slide {
         text-align: center;
-        @include font-dpr(18);
+        @include font-dpr(13);
     }
     &-slide img {
          width: auto;
@@ -25,22 +25,23 @@
 </style>
 
 <template>
-<div class="swiper-container banner">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="img in banners">
-            <img :data-src="img.src" class="swiper-lazy">
-            <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+<div>
+    <div class="swiper-container banner">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="img in banners">
+                <img :data-src="img.src" class="swiper-lazy">
+                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+            </div>
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination swiper-pagination-white"></div>
+    <swiper :apps="newApps"></swiper>
+    <swiper :apps="newGames"></swiper>
 </div>
-<swiper :apps="newApps"></swiper>
-<swiper :apps="newGames"></swiper>
 </template>
 
-<script>
-require('../assets/sass/swiper.scss');
+<script type="es6">
 import Swiper from 'swiper'
 import {appCfg} from '../appCfg'
 export default {
@@ -53,14 +54,14 @@ export default {
     },
     route: {
         data (transition){
-             this.getHomeData();
+             this.pullData();
         },
         deactivate (transition) {
              transition.next();
         }
     },
     methods: {
-        getHomeData (){
+        pullData (){
             $.get(appCfg.ajaxurl.home, (d) => {
                 if (d) {
                     this.banners = d.banners;
@@ -90,6 +91,7 @@ export default {
 
 
             var swiper = new Swiper('.swiper', {
+                initialSlide: 0,
                 pagination: '.swiper-pagination',
                 slidesPerView: 3,
                 paginationClickable: false,

@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "vue": "^1.0.14",
+    "vue-lazyload": "^0.1.9",
     "vue-router": "^0.7.8"
   }
 }

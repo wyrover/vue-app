@@ -1,5 +1,6 @@
 <style lang="sass" scoped>
 @import "../assets/sass/utils";
+@import "../assets/sass/swiper";
 $app-size: 87;
 .swiper {
     &-container {

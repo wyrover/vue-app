@@ -16,7 +16,7 @@ $base: 64;
 }
 // font-dpr
 @mixin font-dpr($base-font-size) {
-  font-size: $base-font-size;
+  font-size: $base-font-size * 1px;
   [data-dpr="2"] & {
     font-size: $base-font-size * 2px;
   }

@@ -8,8 +8,9 @@ nav {
 
 <template>
     <nav>
-        <a v-link="{path: '/home'}">Home</a>
-        <a v-link="{path: '/list', query: {tab: 'rank'}}">Rank</a>
+        <a v-link="{path:'/home'}">Home</a>
+        <a v-link="{path:'/category'}">Category</a>
+        <a v-link="{path:'/rank'}">Rank</a>
     </nav>
 </template>
 
